@@ -1,15 +1,59 @@
+package entities;
 public class Zoo {
     // instruction 5
-    Animal[] animals;
-    String name;
-    String city;
-    int nbrCages;
+    private Animal[] animals;
+    private String name;
+    private String city;
+    private int nbrCages;
+    private int nbrAnimals;
+    private final int NBR_CAGES = 25;
+    
+    
+ public String getName() {
+        return name;
+    }
 
-    int nbrAnimals;
-    //inst14
-    final int NBR_CAGES = 25;
-    
-    
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            System.out.println("⚠️ Le nom du zoo ne peut pas être vide. Valeur remplacée par 'ZooSansNom'.");
+            this.name = "ZooSansNom";
+        } else {
+            this.name = name;
+        }
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getNbrCages() {
+        return nbrCages;
+    }
+
+    public void setNbrCages(int nbrCages) {
+        this.nbrCages = nbrCages;
+    }
+
+    public int getNbrAnimals() {
+        return nbrAnimals;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     // instruction 6 : Constructeur paramétré
     public Zoo(String name, String city, int nbrCages) {
         this.name = name;
@@ -41,32 +85,25 @@ public class Zoo {
     }
 
     
-    //instruction10: ajouter animal
-    public boolean addAnimal(Animal animal) {
-
-        if (nbrAnimals >= nbrCages) {
-            System.out.println("zoo est plein .");
-            return false;
-        }
-
-        //inst12 
-        if (searchAnimal(animal) != -1) {
-            System.out.println("existe deja ");
-            return false;
-        }
-        
-        animals[nbrAnimals] = animal;
-        nbrAnimals++; 
-        
-        System.out.println("animal ajouter avec succee");
-        return true;
-    }
-
+    //inst10: ajouter animal
+            public boolean addAnimal(Animal animal) {
+                if (isZooFull()) {
+                    System.out.println("le zoo est plein ");
+                    return false;
+                }
+                if (searchAnimal(animal) != -1) {
+                    System.out.println("l'animal existe déjà ");
+                    return false;
+                }
+                animals[nbrAnimals++] = animal;
+                System.out.println("animal ajouté avec succès ");
+                return true;
+            }
 
 
     public int searchAnimal(Animal animal) {
         for (int i = 0; i < nbrAnimals; i++) {
-            if (animals[i].name.equalsIgnoreCase(animal.name)) {
+            if (animals[i].getName().equalsIgnoreCase(animal.getName())) {
                 return i;
             }
         }

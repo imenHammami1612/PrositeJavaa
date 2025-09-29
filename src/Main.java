@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import entities.Animal;
+import entities.Zoo;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -18,6 +21,8 @@ public class Main {
 
         // demmander nbcages
         System.out.print("saisir le nombre de cages : ");
+                System.out.print("saisir le nombre de cages : ");
+
         int nouveauNbrCages = sc.nextInt();
 
 
@@ -38,19 +43,13 @@ public class Main {
         System.out.println("\nInstruction 5 :");
 
         // Créer un animal
-        Animal lion = new Animal();
-        lion.family = "sauvage";
-        lion.name = "lucky";
-        lion.age = 5;
-        lion.isMammal = true;
+        Animal lion = new Animal("sauvage", "lucky", 5, true);
+     
 
         // Créer un zoo
-        Zoo myZoo = new Zoo();
-        myZoo.name = "Mon  Zoo";
-        myZoo.city = "Tunis";
-        myZoo.nbrCages = 20;
-        myZoo.animals = new Animal[25];
+                Zoo myZoo = new Zoo("Mon Zoo", "Tunis", 20);
 
+     
         System.out.println("creation des objet sans constructeurparame done");
 
         // Instruction 6 : Créer des animaux avec le constructeur paramétré
@@ -107,7 +106,7 @@ public class Main {
         Zoo zoo2 = new Zoo("Zoo Bizerte", "Bizerte", 5);
         zoo2.addAnimal(new Animal("Oiseaux", "Perroquet", 1, false));
         Zoo plusGros = Zoo.comparerZoo(monZoo, zoo2);
-        System.out.println("\nZoo avec le plus d'animaux : " + plusGros.name);
+        System.out.println("\nZoo avec le plus d'animaux : " + plusGros.getName());
 
         sc.close();
     }
